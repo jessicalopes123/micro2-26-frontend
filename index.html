@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Techbase | Tecnologias</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #172033;
+            background: #f5f7fb;
+            font-synthesis: none;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            background:
+                radial-gradient(ellipse at 12% 0%, rgba(80, 107, 255, .09), transparent 34rem),
+                #f5f7fb;
+        }
+
+        button, input, select { font: inherit; }
+        button { cursor: pointer; }
+
+        .shell {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 46px 0 64px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .brand { display: flex; align-items: center; gap: 13px; }
+        .brand-mark {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            border-radius: 14px;
+            background: #263dce;
+            color: white;
+            font-size: 19px;
+            font-weight: 800;
+            box-shadow: 0 8px 18px rgba(38, 61, 206, .2);
+        }
+
+        .brand-name { margin: 0; font-size: 17px; font-weight: 750; letter-spacing: -.03em; }
+        .brand-caption { margin: 3px 0 0; color: #778198; font-size: 12px; }
+        .eyebrow { color: #5168df; font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+        h1 { margin: 9px 0 8px; font-size: clamp(29px, 4vw, 39px); letter-spacing: -.055em; }
+        .intro { margin: 0; color: #6b7489; font-size: 15px; }
+
+        .panel {
+            margin-top: 25px;
+            padding: 24px;
+            border: 1px solid #e8ebf3;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .92);
+            box-shadow: 0 12px 32px rgba(25, 38, 79, .045);
+        }
+
+        .auth-panel { display: flex; align-items: end; gap: 14px; }
+        .field { display: flex; flex: 1; flex-direction: column; gap: 8px; min-width: 0; }
+        label { color: #454e63; font-size: 12px; font-weight: 700; }
+        input, select {
+            width: 100%;
+            min-height: 43px;
+            padding: 10px 12px;
+            border: 1px solid #dfe3ed;
+            border-radius: 9px;
+            outline: none;
+            background: #fff;
+            color: #202a40;
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        input:focus, select:focus { border-color: #6879e8; box-shadow: 0 0 0 3px rgba(80, 101, 223, .12); }
+        input::placeholder { color: #a4aabc; }
+        .button {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 0 15px;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform .15s, background .15s;
+        }
+
+        .button:hover { transform: translateY(-1px); }
+        .button-primary { background: #3048d8; color: #fff; }
+        .button-primary:hover { background: #263dcb; }
+        .button-secondary { border-color: #e0e4ee; background: white; color: #49536a; }
+        .button-secondary:hover { background: #f7f8fc; }
+        .button-danger { border-color: #f4d8da; background: #fff8f8; color: #b83b46; }
+        .button-danger:hover { background: #fff0f1; }
+        .button-small { min-height: 33px; padding: 0 10px; font-size: 12px; }
+
+        .form-heading, .table-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        h2 { margin: 0; font-size: 17px; letter-spacing: -.025em; }
+        .subheading { margin: 5px 0 0; color: #828a9c; font-size: 12px; }
+        .technology-form { display: grid; grid-template-columns: 1.15fr .7fr 1.15fr auto; align-items: end; gap: 13px; }
+        .form-actions { display: flex; gap: 8px; }
+        .table-tools { display: flex; align-items: center; gap: 12px; }
+        .search { width: min(250px, 38vw); min-height: 38px; padding: 8px 11px; font-size: 13px; }
+        .count { color: #8a91a1; font-size: 12px; white-space: nowrap; }
+
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        thead { background: #f8f9fc; }
+        th {
+            padding: 12px 15px;
+            color: #8a91a2;
+            font-size: 10px;
+            font-weight: 750;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+
+        td { padding: 15px; border-top: 1px solid #edf0f5; color: #4d566b; font-size: 13px; }
+        td:first-child { color: #202a40; font-weight: 700; }
+        .base-badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            background: #eef0ff;
+            color: #4658c8;
+            font-size: 11px;
+            font-weight: 750;
+        }
+
+        .actions { display: flex; gap: 7px; }
+        .empty-cell { padding: 44px 15px; color: #8a91a2; text-align: center; }
+        #mensagem { min-height: 19px; margin: 14px 0 0; color: #58647c; font-size: 13px; }
+        #mensagem.erro { color: #b83b46; }
+        #mensagem.sucesso { color: #22734b; }
+        .hidden { display: none !important; }
+
+        @media (max-width: 760px) {
+            .shell { width: min(100% - 28px, 600px); padding-top: 28px; }
+            .auth-panel { align-items: stretch; flex-direction: column; }
+            .technology-form { grid-template-columns: 1fr 1fr; }
+            .technology-form .field:first-child, .technology-form .field:nth-child(3) { grid-column: span 2; }
+            .form-actions { grid-column: span 2; }
+            .table-heading { align-items: flex-start; flex-direction: column; }
+            .table-tools { width: 100%; justify-content: space-between; }
+            .search { width: min(65%, 280px); }
+        }
+
+        @media (max-width: 430px) {
+            .shell { width: calc(100% - 22px); }
+            .panel { padding: 17px; }
+            .technology-form { grid-template-columns: 1fr; }
+            .technology-form .field:first-child, .technology-form .field:nth-child(3), .form-actions { grid-column: auto; }
+            .form-actions .button { flex: 1; }
+            th, td { padding: 12px 9px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">&lt;/&gt;</div>
+                <div>
+                    <p class="brand-name">Techbase</p>
+                    <p class="brand-caption">Catálogo de tecnologias</p>
+                </div>
+            </div>
+        </header>
+
+        <section aria-labelledby="page-title">
+            <span class="eyebrow">Painel de gerenciamento</span>
+            <h1 id="page-title">Tecnologias</h1>
+            <p class="intro">Organize linguagens, frameworks e o tempo médio de aprendizado.</p>
+        </section>
+
+        <section class="panel" aria-label="Autenticação da API">
+            <div class="auth-panel">
+                <div class="field">
+                    <label for="token">Token de acesso</label>
+                    <input id="token" type="password" placeholder="Informe o token configurado no servidor" autocomplete="off">
+                </div>
+                <button class="button button-primary" id="conectar" type="button">Conectar à API</button>
+            </div>
+            <p id="mensagem" role="status" aria-live="polite">Informe seu token para acessar o catálogo.</p>
+        </section>
+
+        <section id="conteudo" class="hidden">
+            <section class="panel" aria-labelledby="form-title">
+                <div class="form-heading">
+                    <div>
+                        <h2 id="form-title">Cadastrar tecnologia</h2>
+                        <p class="subheading">Preencha os dados da tecnologia que deseja acompanhar.</p>
+                    </div>
+                </div>
+                <form id="formTecnologia" class="technology-form">
+                    <div class="field">
+                        <label for="nome">Nome</label>
+                        <input id="nome" name="nome" type="text" maxlength="80" placeholder="Ex.: React" required>
+                    </div>
+                    <div class="field">
+                        <label for="base">Base</label>
+                        <select id="base" name="base" required>
+                            <option value="">Selecione</option>
+                            <option value="JS">JS</option>
+                            <option value="PHP">PHP</option>
+                            <option value="C#">C#</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="curvaAprendizado">Curva de aprendizado</label>
+                        <input id="curvaAprendizado" name="curvaAprendizado" type="text" maxlength="100" placeholder="Ex.: 3 meses" required>
+                    </div>
+                    <div class="form-actions">
+                        <button class="button button-primary" id="salvar" type="submit">Cadastrar</button>
+                        <button class="button button-secondary hidden" id="cancelar" type="button">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel" aria-labelledby="table-title">
+                <div class="table-heading">
+                    <div>
+                        <h2 id="table-title">Catálogo cadastrado</h2>
+                        <p class="subheading">Consulte e mantenha os registros atualizados.</p>
+                    </div>
+                    <div class="table-tools">
+                        <input id="pesquisa" class="search" type="search" placeholder="Buscar tecnologia..." aria-label="Buscar tecnologia">
+                        <span id="quantidade" class="count">0 tecnologias</span>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Base</th>
+                                <th>Curva de aprendizado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaTecnologias">
+                            <tr><td class="empty-cell" colspan="4">Conecte-se para carregar os dados.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="/main.js"></script>
+</body>
+</html>
