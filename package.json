@@ -1,0 +1,30 @@
+{
+  "name": "micro2_26",
+  "version": "1.0.0",
+  "description": "Repositório para acompanhamento das aulas de microsserviços piaget ADS 5sem26",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicalopes123/micro2-26-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicalopes123/micro2-26-frontend/issues"
+  },
+  "homepage": "https://github.com/jessicalopes123/micro2-26-frontend#readme",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.2.1",
+    "mongoose": "^9.11.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
